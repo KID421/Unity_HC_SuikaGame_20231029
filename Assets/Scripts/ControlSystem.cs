@@ -51,6 +51,53 @@ namespace KID
         public float limitLeft = -4.5f;
         [Header("右邊界")]
         public float limitRight = 4.5f;
+
+        /* 複習事件與輸出
+        // 喚醒事件：遊戲開始時執行一次
+        private void Awake()
+        {
+            // 輸出訊息(訊息)
+            // 將訊息輸出至 Unity 的 Console 面板 (Ctrl + Shift + C 開啟)
+            print(777);
+            print("哈囉，沃德 :D");
+            print(moveSpeed);
+            print("<color=yellow>黃色的文字</color>");
+            print("<color=#69f>左邊邊界：limitLeft</color>");
+            print($"<color=#69f>左邊邊界：{limitLeft}</color>");
+        }
+        */
+
+        // 更新事件：約 60 FPS
+        // 可以偵測玩家的輸入行為，鍵盤、滑鼠、搖桿、觸控、XR 控制器
+        private void Update()
+        {
+            Move();
+        }
+
+        /// <summary>
+        /// 移動方法：偵測玩家的輸入並控制角色移動以及範圍限制
+        /// </summary>
+        private void Move()
+        {
+            // h = 玩家輸入的水平按鍵 A、D 與 ← →
+            float h = Input.GetAxis("Horizontal");
+            // print($"<color=#96f>水平值：{h}</color>");
+
+            // 角色變形.位移(玩家水平 * 1/60 * 移動速度， 0， 0)
+            transform.Translate(h * Time.deltaTime * moveSpeed, 0, 0);
+
+            // 角色的座標
+            // print(transform.position);
+
+            // 點 = 角色的座標
+            Vector3 point = transform.position;
+
+            // 點.x = 數學的夾數(點.x，左邊屆，又邊界)
+            point.x = Mathf.Clamp(point.x, limitLeft, limitRight);
+
+            // 角色的座標 = 點
+            transform.position = point;
+        }
     }
 }
 
