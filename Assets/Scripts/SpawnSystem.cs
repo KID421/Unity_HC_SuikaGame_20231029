@@ -54,6 +54,11 @@ namespace KID
         [Header("延遲將史萊姆移到手上的時間"), Range(0, 2)]
         public float delayChangeCurrentSlime = 0.5f;
 
+        /// <summary>
+        /// 是否能夠放下史萊姆
+        /// </summary>
+        public bool canReleaseSlime = true;
+
         private void Awake()
         {
             currentSlime = RandomSlime();
@@ -91,8 +96,13 @@ namespace KID
 
             // 判斷式 if 語法
             // if (布林值) { 程式，當布林值為 true 執行這裡 }
-            if (slimeKey)
+
+            // 如果 按下放開鍵 並且 可以放下
+            // if (slimeKey && canReleaseSlime == true)
+            if (slimeKey && canReleaseSlime)
             {
+                // 不可以放下史萊姆
+                canReleaseSlime = false;
                 // 史萊姆的重力設定為 1
                 // 目前史萊姆 取得他的 2D 剛體 並且將 重力 改為 1
                 currentSlime.GetComponent<Rigidbody2D>().gravityScale = 1;
@@ -127,6 +137,8 @@ namespace KID
             // currentSlime.transform.localPosition = new Vector3(0, -1, 0);
             // 再生一隻放到下一隻史萊姆
             nextSlime = Instantiate(nextSlime, nextPoint.position, Quaternion.identity, nextPoint);
+            // 可以放下史萊姆
+            canReleaseSlime = true;
         }
     }
 }

@@ -52,6 +52,27 @@ namespace KID
         [Header("右邊界")]
         public float limitRight = 4.5f;
 
+        // 將資料設為 私人 private 避免其他程式存取 (安全)
+        // 要將私人資料顯示 SerializeField 序列化欄位
+        [Header("動畫控制器元件"), SerializeField]
+        private Animator ani;
+        [Header("圖片渲染元件"), SerializeField]
+        private SpriteRenderer sprite;
+
+        private string parMove = "移動數值";
+
+        // 屬性 Property 與欄位相似：儲存資料
+        // 可以設定 存取 權限
+        // prop + Tab
+        // 唯讀屬性
+        public float inputHorizontal
+        {
+            get
+            {
+                return Input.GetAxis("Horizontal");
+            }
+        }
+
         /* 複習事件與輸出
         // 喚醒事件：遊戲開始時執行一次
         private void Awake()
@@ -72,6 +93,8 @@ namespace KID
         private void Update()
         {
             Move();
+            UpdateAnimation();
+            Flip();
         }
 
         /// <summary>
@@ -79,12 +102,14 @@ namespace KID
         /// </summary>
         private void Move()
         {
+            // 區域變數 float h = ...;
+            // 僅在此大括號內可以存取
             // h = 玩家輸入的水平按鍵 A、D 與 ← →
-            float h = Input.GetAxis("Horizontal");
+            // float h = Input.GetAxis("Horizontal");
             // print($"<color=#96f>水平值：{h}</color>");
 
             // 角色變形.位移(玩家水平 * 1/60 * 移動速度， 0， 0)
-            transform.Translate(h * Time.deltaTime * moveSpeed, 0, 0);
+            transform.Translate(inputHorizontal * Time.deltaTime * moveSpeed, 0, 0);
 
             // 角色的座標
             // print(transform.position);
@@ -97,6 +122,28 @@ namespace KID
 
             // 角色的座標 = 點
             transform.position = point;
+        }
+
+        /// <summary>
+        /// 更新動畫
+        /// </summary>
+        private void UpdateAnimation()
+        {
+            // 將玩家水平值 設定為 絕對值
+            float hAbs = Mathf.Abs(inputHorizontal);
+            // 動畫.設定浮點數(移動數值參數，水平值絕對值)
+            ani.SetFloat(parMove, hAbs);
+        }
+
+        /// <summary>
+        /// 翻面
+        /// </summary>
+        private void Flip()
+        {
+            // 如果 水平值取絕對值 < 0.1 就跳出 (避免回頭)
+            if (Mathf.Abs(inputHorizontal) < 0.1f) return;
+
+            sprite.flipX = inputHorizontal < 0;
         }
     }
 }

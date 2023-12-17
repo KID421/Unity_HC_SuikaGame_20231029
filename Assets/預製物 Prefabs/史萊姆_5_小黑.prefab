@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7027191810648306616}
   - component: {fileID: 2523675906495153506}
   - component: {fileID: 6131173882170387791}
-  - component: {fileID: 8582134248965001465}
+  - component: {fileID: -7664981000113336709}
   m_Layer: 0
   m_Name: "\u53F2\u840A\u59C6_5_\u5C0F\u9ED1"
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7027191810648306616
 SpriteRenderer:
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: e551a3826321a524985292199cf410b3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -135,7 +135,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &8582134248965001465
+--- !u!60 &-7664981000113336709
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
