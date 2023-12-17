@@ -94,7 +94,8 @@ namespace KID
         {
             Move();
             UpdateAnimation();
-            Flip();
+            // Flip();
+            FlipAngle();
         }
 
         /// <summary>
@@ -108,8 +109,8 @@ namespace KID
             // float h = Input.GetAxis("Horizontal");
             // print($"<color=#96f>水平值：{h}</color>");
 
-            // 角色變形.位移(玩家水平 * 1/60 * 移動速度， 0， 0)
-            transform.Translate(inputHorizontal * Time.deltaTime * moveSpeed, 0, 0);
+            // 角色變形.位移(玩家水平 * 1/60 * 移動速度， 0， 0，空間)
+            transform.Translate(inputHorizontal * Time.deltaTime * moveSpeed, 0, 0, Space.World);
 
             // 角色的座標
             // print(transform.position);
@@ -144,6 +145,26 @@ namespace KID
             if (Mathf.Abs(inputHorizontal) < 0.1f) return;
 
             sprite.flipX = inputHorizontal < 0;
+        }
+
+        /// <summary>
+        ///  翻面：旋轉角度處理
+        /// </summary>
+        private void FlipAngle()
+        {
+            // 如果 水平值取絕對值 < 0.1 就跳出 (避免回頭)
+            if (Mathf.Abs(inputHorizontal) < 0.1f) return;
+
+            Vector3 angle = Vector3.zero;
+            // 如果 水平值 > 0，Y 軸 0， 水平值 < 0，Y 軸 180
+            // 三元運算子 ? : 
+            // 語法：布林值 ? 當布林值等於 true : 當布林值等於 false;
+            // 範例：true ? 1 : 180; 結果：1
+            // 範例：false ? 1 : 180; 結果：180
+            angle.y = inputHorizontal > 0 ? 0 : 180;
+
+            // 更新變形元件的角度 = 新角度
+            transform.eulerAngles = angle;
         }
     }
 }
