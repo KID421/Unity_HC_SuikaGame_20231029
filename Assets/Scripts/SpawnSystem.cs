@@ -51,6 +51,8 @@ namespace KID
         public Transform nextPoint;
         [Header("放下按鍵")]
         public KeyCode releaseSlimeKey = KeyCode.Space;
+        [Header("延遲將史萊姆移到手上的時間"), Range(0, 2)]
+        public float delayChangeCurrentSlime = 0.5f;
 
         private void Awake()
         {
@@ -78,6 +80,9 @@ namespace KID
             return prefabSlimes[random];
         }
 
+        /// <summary>
+        /// 放開史萊姆
+        /// </summary>
         private void ReleaseSlime()
         {
             // 如果玩家按下放下按鍵 就放開始史萊姆(重力 1)
@@ -98,10 +103,30 @@ namespace KID
             }
         }
 
+        /// <summary>
+        /// 切換下一隻與目前史萊姆
+        /// </summary>
         private void SwitchCurrentAndNext()
         {
             currentSlime = nextSlime;
             nextSlime = RandomSlime();
+
+            // 延遲 0.5 秒執行
+            // 延遲呼叫方法(方法名稱，延遲時間)
+            Invoke("DelayChangeCurrentSlime", delayChangeCurrentSlime);
+        }
+
+        /// <summary>
+        /// 延遲將目前史萊姆移動到手上
+        /// </summary>
+        private void DelayChangeCurrentSlime()
+        {
+            // 將目前史萊姆放在手上，父物件與座標
+            currentSlime.transform.SetParent(spawnPoint);
+            currentSlime.transform.localPosition = Vector3.zero;
+            // currentSlime.transform.localPosition = new Vector3(0, -1, 0);
+            // 再生一隻放到下一隻史萊姆
+            nextSlime = Instantiate(nextSlime, nextPoint.position, Quaternion.identity, nextPoint);
         }
     }
 }
