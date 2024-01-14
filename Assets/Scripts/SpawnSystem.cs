@@ -92,7 +92,7 @@ namespace KID
         {
             // 如果玩家按下放下按鍵 就放開始史萊姆(重力 1)
             bool slimeKey = Input.GetKeyDown(releaseSlimeKey);
-            print($"<color=#f89>玩家有沒有按放下鍵：{slimeKey}</color>");
+            // print($"<color=#f89>玩家有沒有按放下鍵：{slimeKey}</color>");
 
             // 判斷式 if 語法
             // if (布林值) { 程式，當布林值為 true 執行這裡 }
