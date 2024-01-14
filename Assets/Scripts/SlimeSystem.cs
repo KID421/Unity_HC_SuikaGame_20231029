@@ -33,6 +33,16 @@ namespace KID
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
+            // 如果 這是最大隻的 就跳出
+            /*
+            if (index == 7)
+            {
+                return;
+            }
+            */
+
+            if (index == 7) return;
+
             // print($"<color=#f69>碰到的物件 {collision.gameObject.name}</color>");
 
             // 如果 碰到物件的名稱 與 這個物件的名稱 相同
