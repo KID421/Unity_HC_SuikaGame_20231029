@@ -81,7 +81,7 @@ namespace KID
         /// <returns>隨機史萊姆</returns>
         private GameObject RandomSlime()
         {
-            int random = Random.Range(0, prefabSlimes.Length);
+            int random = Random.Range(0, ScoreManager.instance.maxSlimeIndex);
             return prefabSlimes[random];
         }
 

@@ -18,6 +18,14 @@ namespace KID
 
         public static ScoreManager instance;
 
+        // 分數 0 ~ 100 生成 0 1 2
+        // 分數 100 ~ 500 生成 0 1 2 3 
+        // 分數 500 ~ 1000 生成 0 1 2 3 4
+        // 分數 1500 ~ 2000 生成 0 1 2 3 4 5
+        // 分數 2000 ~ 2500 生成 0 1 2 3 4 5 6
+        // 分數 2500 ~ 3000 生成 0 1 2 3 4 5 6 7
+        public int maxSlimeIndex = 2;
+
         private void Awake()
         {
             instance = this;
@@ -35,6 +43,27 @@ namespace KID
             totalScore += score;
             // 更新分數文字介面 = 總分.轉為文字()；
             textScore.text = totalScore.ToString();
+
+            ChangMaxSlimeIndex();
+        }
+
+        /// <summary>
+        /// 變更最大史萊姆編號
+        /// </summary>
+        private void ChangMaxSlimeIndex()
+        {
+            // 如果 總分 >= 2500 最大編號 7
+            if (totalScore >= 2500) maxSlimeIndex = 7;
+            // 如果 總分 >= 2000 最大編號 6
+            else if (totalScore >= 2000) maxSlimeIndex = 6;
+            // 如果 總分 >= 1500 最大編號 5
+            else if (totalScore >= 1500) maxSlimeIndex = 5;
+            // 如果 總分 >= 1000 最大編號 4
+            else if (totalScore >= 1000) maxSlimeIndex = 4;
+            // 如果 總分 >= 500 最大編號 3
+            else if (totalScore >= 500) maxSlimeIndex = 3;
+
+            print($"<color=#f99>最大史萊姆編號：{maxSlimeIndex}</color>");
         }
     }
 }
