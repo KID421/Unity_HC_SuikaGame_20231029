@@ -19,6 +19,16 @@ namespace KID
         private void OnCollisionEnter2D(Collision2D collision)
         {
             print($"<color=#f69>碰到的物件 {collision.gameObject.name}</color>");
+
+            // 如果 碰到物件的名稱 與 這個物件的名稱 相同
+            // 就 合成 (刪除、爆炸特效、升級後的史萊姆)
+            // 等於 ==
+            // gameObject 此物件
+            if (collision.gameObject.name == gameObject.name)
+            {
+                // 刪除物件(要刪除的物件)
+                Destroy(gameObject);
+            }
         }
     }
 }
