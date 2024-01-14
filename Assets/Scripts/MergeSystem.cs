@@ -18,6 +18,11 @@ namespace KID
         // static 靜態
         public static MergeSystem instance;
 
+        /// <summary>
+        /// 可以合成
+        /// </summary>
+        private bool canMerge = true;
+
         private void Awake()
         {
             // 實體物件 = 這個腳本；
@@ -28,10 +33,16 @@ namespace KID
         /// 合成
         /// </summary>
         /// 小括號內參數語法：類型 參數名稱 (接收資料)
-        public void Merge(int _index)
+        public void Merge(int _index, Vector2 _point)
         {
-            print("<color=#99f>合成</color>");
-            Instantiate(prefabSlimes[_index], Vector3.zero, Quaternion.identity);
+            // 如果可以合成
+            if (canMerge)
+            {
+                // 不可以合成
+                canMerge = false;
+                print("<color=#99f>合成</color>");
+                Instantiate(prefabSlimes[_index], _point, Quaternion.identity);
+            }
         }
     }
 }
