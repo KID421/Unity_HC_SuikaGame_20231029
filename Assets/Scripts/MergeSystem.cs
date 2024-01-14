@@ -41,11 +41,19 @@ namespace KID
                 // 不可以合成
                 canMerge = false;
                 GameObject tempSlimes = Instantiate(prefabSlimes[_index], _point, Quaternion.identity);
+                // 生成出來的史萊姆 類型 恢復為 動態
+                tempSlimes.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                 // 生成出來的史萊姆 重力 恢復為 1
                 tempSlimes.GetComponent<Rigidbody2D>().gravityScale = 1;
-                // 延遲 0.1 秒恢復可以合成
+                // 生成出來的史萊姆 碰撞器(不限形狀) 啟動
+                tempSlimes.GetComponent<Collider2D>().enabled = true;
+                // 延遲 0.01 秒恢復可以合成
                 // 延遲呼叫方法(方法名稱，延遲時間)
-                Invoke("CanMerge", 0.1f);
+                Invoke("CanMerge", 0.01f);
+
+                // 加分數
+                // 腳本名稱.實體.公開成員
+                ScoreManager.instance.AddScore(_index);
             }
         }
 

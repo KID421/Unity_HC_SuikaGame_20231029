@@ -51,7 +51,7 @@ namespace KID
             // gameObject 此物件
             if (collision.gameObject.name == gameObject.name)
             {
-                print($"<color=#69f>要生出的史萊姆編號 {index + 1}</color>");
+                // print($"<color=#69f>要生出的史萊姆編號 {index + 1}</color>");
 
                 // 此物件的座標
                 Vector2 pointA = transform.position;

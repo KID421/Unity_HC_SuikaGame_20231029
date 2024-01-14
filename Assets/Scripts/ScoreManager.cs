@@ -6,6 +6,7 @@ namespace KID
     /// <summary>
     /// 分數管理
     /// </summary>
+    [DefaultExecutionOrder(0)]
     public class ScoreManager : MonoBehaviour
     {
         [Header("分數")]
@@ -14,6 +15,13 @@ namespace KID
         public int[] slimeScores = { 10, 20, 30, 40, 50, 60, 70, 80 };
 
         private int totalScore;
+
+        public static ScoreManager instance;
+
+        private void Awake()
+        {
+            instance = this;
+        }
 
         /// <summary>
         /// 加分數方法

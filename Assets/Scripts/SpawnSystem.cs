@@ -104,8 +104,12 @@ namespace KID
                 // 不可以放下史萊姆
                 canReleaseSlime = false;
                 // 史萊姆的重力設定為 1
+                // 目前史萊姆 取得他的 2D 剛體 並且類型改回 動態
+                currentSlime.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                 // 目前史萊姆 取得他的 2D 剛體 並且將 重力 改為 1
                 currentSlime.GetComponent<Rigidbody2D>().gravityScale = 1;
+                // 取得目前史萊姆 的 碰撞器(不限形狀) 並啟動
+                currentSlime.GetComponent<Collider2D>().enabled = true;
                 // 將目前史萊姆的父物件設為空
                 currentSlime.transform.SetParent(null);
                 // 對調目前與下一隻
