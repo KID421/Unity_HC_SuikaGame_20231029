@@ -11,6 +11,8 @@ namespace KID
     {
         [Header("所有史萊姆預製物")]
         public GameObject[] prefabSlimes;
+        [SerializeField, Header("合成音效")]
+        private AudioClip soundMerge;
 
         // 單例模式
         // 只有一個存在的時候可以使用
@@ -54,6 +56,8 @@ namespace KID
                 // 加分數
                 // 腳本名稱.實體.公開成員
                 ScoreManager.instance.AddScore(_index);
+
+                SoundManager.instance.PlaySound(soundMerge);
             }
         }
 

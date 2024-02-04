@@ -14,6 +14,8 @@ namespace KID
         private ControlSystem controlSystem;
         [SerializeField, Header("生成系統")]
         private SpawnSystem spawnSystem;
+        [SerializeField, Header("遊戲結束音效")]
+        private AudioClip soundGameOver;
 
         // 1. 需要兩個物件並且都有碰撞器 Collider2D
         // 2. 其中一個要有剛體 Rigidbody2D
@@ -21,11 +23,15 @@ namespace KID
         private void OnTriggerEnter2D(Collider2D collision)
         {
             print($"<color=#f69>碰到的物件：{collision.name}</color>");
-            StartCoroutine(FadeIn());
+
+            // 如果碰到的物件貼有"掉下去的史萊姆"標籤才會淡入結束畫面
+            if (collision.tag == "掉下去的史萊姆") StartCoroutine(FadeIn());
         }
 
         private IEnumerator FadeIn()
         {
+            SoundManager.instance.PlaySound(soundGameOver);
+
             controlSystem.enabled = false;      // 關閉控制系統
             spawnSystem.enabled = false;        // 關閉生成系統
 

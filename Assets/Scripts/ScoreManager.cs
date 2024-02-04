@@ -13,6 +13,8 @@ namespace KID
         public TextMeshProUGUI textScore;
         [Header("所有史萊姆的分數")]
         public int[] slimeScores = { 10, 20, 30, 40, 50, 60, 70, 80 };
+        [SerializeField, Header("最佳分數")]
+        private TextMeshProUGUI textHighScore;
 
         private int totalScore;
 
@@ -29,6 +31,8 @@ namespace KID
         private void Awake()
         {
             instance = this;
+            // 將最高分數拿出來並轉為字串貼在最佳分數介面上
+            textHighScore.text = PlayerPrefs.GetInt("最高分數").ToString();
         }
 
         /// <summary>
@@ -45,6 +49,20 @@ namespace KID
             textScore.text = totalScore.ToString();
 
             ChangMaxSlimeIndex();
+
+            HighScore();
+        }
+
+        /// <summary>
+        /// 最高分數處理
+        /// </summary>
+        private void HighScore()
+        {
+            // 拿出本機的最高分數
+            int highScore = PlayerPrefs.GetInt("最高分數");
+            // 如果 累加總分 > 最高分數
+            // 最高分數 改為 累加總分
+            if (totalScore > highScore) PlayerPrefs.SetInt("最高分數", totalScore);
         }
 
         /// <summary>

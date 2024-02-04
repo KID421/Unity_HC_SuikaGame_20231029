@@ -33,6 +33,9 @@ namespace KID
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
+            // 把這隻史萊姆貼上標籤"掉下去的史萊姆"
+            tag = "掉下去的史萊姆";
+
             // 如果 這是最大隻的 就跳出
             /*
             if (index == 7)

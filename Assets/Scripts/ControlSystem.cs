@@ -98,6 +98,13 @@ namespace KID
             FlipAngle();
         }
 
+        // 元件被關閉時會執行一次的事件
+        private void OnDisable()
+        {
+            // 移動浮點數歸零，恢復待機
+            ani.SetFloat(parMove, 0);
+        }
+
         /// <summary>
         /// 移動方法：偵測玩家的輸入並控制角色移動以及範圍限制
         /// </summary>
