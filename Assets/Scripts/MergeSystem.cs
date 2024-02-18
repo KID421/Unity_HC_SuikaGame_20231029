@@ -13,6 +13,8 @@ namespace KID
         public GameObject[] prefabSlimes;
         [SerializeField, Header("合成音效")]
         private AudioClip soundMerge;
+        [SerializeField, Header("合成特效")]
+        private GameObject objectMergeEffect;
 
         // 單例模式
         // 只有一個存在的時候可以使用
@@ -42,7 +44,11 @@ namespace KID
             {
                 // 不可以合成
                 canMerge = false;
-                GameObject tempSlimes = Instantiate(prefabSlimes[_index], _point, Quaternion.identity);
+                GameObject tempSlimes = Instantiate(prefabSlimes[_index], _point + new Vector2(0, 0.5f), Quaternion.identity);
+                // 生成合成特效
+                GameObject tempMergeEffect = Instantiate(objectMergeEffect, _point, Quaternion.identity);
+                // 延遲 0.5 秒刪除合成特效
+                Destroy(tempMergeEffect, 0.5f);
                 // 生成出來的史萊姆 類型 恢復為 動態
                 tempSlimes.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                 // 生成出來的史萊姆 重力 恢復為 1

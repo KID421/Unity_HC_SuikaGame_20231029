@@ -2726,7 +2726,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabSlimes:
-  - {fileID: 1046025911754478080, guid: ac364fb44fecb4f41bbd8684195e01cf, type: 3}
+  - {fileID: 333787615568894000, guid: ac364fb44fecb4f41bbd8684195e01cf, type: 3}
   - {fileID: 6994229858567432330, guid: 2b036df163a9ab64d856a8b11c785358, type: 3}
   - {fileID: 4106001771550089635, guid: 479ff579a2d21ac45b09a225b13ce635, type: 3}
   - {fileID: 4367267554781051564, guid: 1b98bb3137b2acb41a362689773e8dcd, type: 3}
@@ -2735,6 +2735,7 @@ MonoBehaviour:
   - {fileID: 1537814807211127712, guid: 7e8f87172dbcbfc4d8d9530a5a6a655c, type: 3}
   - {fileID: 7090526236285289876, guid: 4c2f83d517ee1d247bb187a90aa483ac, type: 3}
   soundMerge: {fileID: 8300000, guid: 0c8466ef47eb7f84cbac94ee825039c1, type: 3}
+  objectMergeEffect: {fileID: 9188462228367776770, guid: 805b34a225dae524c81928c7c6befff8, type: 3}
 --- !u!1 &1406098114
 GameObject:
   m_ObjectHideFlags: 0
@@ -3554,7 +3555,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1773803828
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -3977,7 +3978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabSlimes:
-  - {fileID: 1046025911754478080, guid: ac364fb44fecb4f41bbd8684195e01cf, type: 3}
+  - {fileID: 333787615568894000, guid: ac364fb44fecb4f41bbd8684195e01cf, type: 3}
   - {fileID: 6994229858567432330, guid: 2b036df163a9ab64d856a8b11c785358, type: 3}
   - {fileID: 4106001771550089635, guid: 479ff579a2d21ac45b09a225b13ce635, type: 3}
   - {fileID: 4367267554781051564, guid: 1b98bb3137b2acb41a362689773e8dcd, type: 3}
@@ -9683,7 +9684,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2078889989}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.99, z: 0}
+  m_LocalPosition: {x: 0, y: -4.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

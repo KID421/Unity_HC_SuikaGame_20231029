@@ -17,19 +17,27 @@ namespace KID
         [SerializeField, Header("遊戲結束音效")]
         private AudioClip soundGameOver;
 
+        /// <summary>
+        /// 是否遊戲結束
+        /// </summary>
+        private bool isGameOver;
+
         // 1. 需要兩個物件並且都有碰撞器 Collider2D
         // 2. 其中一個要有剛體 Rigidbody2D
         // 3. 其中一個要勾選 Is Trigger
-        private void OnTriggerEnter2D(Collider2D collision)
+        private void OnTriggerStay2D(Collider2D collision)
         {
             print($"<color=#f69>碰到的物件：{collision.name}</color>");
 
-            // 如果碰到的物件貼有"掉下去的史萊姆"標籤才會淡入結束畫面
-            if (collision.tag == "掉下去的史萊姆") StartCoroutine(FadeIn());
+            // 如果 還沒 遊戲結束 並且 碰到的物件貼有"掉下去的史萊姆"標籤才會淡入結束畫面
+            if (!isGameOver && collision.tag == "掉下去的史萊姆") StartCoroutine(FadeIn());
         }
 
         private IEnumerator FadeIn()
         {
+            // 已經遊戲結束
+            isGameOver = true;
+
             SoundManager.instance.PlaySound(soundGameOver);
 
             controlSystem.enabled = false;      // 關閉控制系統

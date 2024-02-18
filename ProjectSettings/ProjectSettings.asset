@@ -766,7 +766,13 @@ PlayerSettings:
   XboxOneOverrideIdentityName: 
   XboxOneOverrideIdentityPublisher: 
   vrEditorSettings: {}
-  cloudServicesEnabled: {}
+  cloudServicesEnabled:
+    Build: 0
+    Game Performance: 0
+    Legacy Analytics: 0
+    Purchasing: 0
+    UDP: 0
+    Unity Ads: 0
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -786,11 +792,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 2b920bf4-8bd5-4484-9c53-c7c69e29e192
+  cloudProjectId: eb80d20f-7919-43d6-b608-948a77360396
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Unity_HC_SuikaGame_20231029
-  organizationId: kid-studio
+  projectName: "\u53F2\u840A\u53F2\u53BB"
+  organizationId: kid77421
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
